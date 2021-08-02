@@ -11,7 +11,7 @@ for i in range(0, 3000, 1000):
     r = requests.get(url=url)
     data = json.loads(r.text)
 
-    worksheet = workbook.add_worksheet("{page_number}")
+    worksheet = workbook.add_worksheet(f"{page_number}")
     
     row = 0
     col = 0
@@ -19,6 +19,7 @@ for i in range(0, 3000, 1000):
     for company in data["items"]:
         worksheet.write(row, col, company["title"])
         worksheet.write(row, col + 1, company["region"]["title"])
+        worksheet.write(row, col + 2, company["html_url"])
         # add some columns
         row += 1
 
